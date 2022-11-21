@@ -1,21 +1,24 @@
-| HTTP Method |        URL path        |          Description           | JSON |    ROLES     |
-| :---------: | :--------------------: | :----------------------------: | :--: | :----------: |
-|     GET     |       /registrar       |           registrar            |      |   usuario    |
-|    POST     |       /registrar       |           registrar            |      |   usuario    |
-|     GET     |         /login         |             login              |      |   usuario    |
-|    POST     |         /login         |             login              |      |   usuario    |
-|     GET     |        /logout         |         logout un form         |      |   usuario    |
-|     GET     |           /            |           index page           |      |   usuario    |
-|     GET     |   /ingredientes/list   |       ingredientes list        |      | PM: eliminar |
-|     GET     |  /usuarios/mi-perfil   | editar infor y eliminar receta |      |   usuario    |
-|     GET     |     /usuarios/list     |           user list            |      |   usuario    |
-|     GET     |     /recetas/crear     |         crear recetas          |      |   usuario    |
-|    POST     |     /recetas/crear     |         crear recetas          |      |   usuario    |
-|     GET     |  /recetas/mis-recetas  |      list de mis recetas       |      |   usuario    |
-|     GET     | /recetas/todas-recetas |     list de todas recetas      |      |              |
-|     GET     |  /recetas/detalle/:id  |            detalles            |      |   usuario    |
-|     GET     |       /contactos       |           form de AC           |      |   usuario    |
-|    POST     |       /contactos       |      Atencion de cliente       |      |   usuario    |
+| HTTP Method |        URL path        |          Description           | JSON |     ROLES     |
+| :---------: | :--------------------: | :----------------------------: | :--: | :-----------: |
+|     GET     |       /registrar       |           registrar            |      |    usuario    |
+|    POST     |       /registrar       |           registrar            |      |    usuario    |
+|     GET     |         /login         |             login              |      |    usuario    |
+|    POST     |         /login         |             login              |      |    usuario    |
+|     GET     |        /logout         |         logout un form         |      |    usuario    |
+|     GET     |           /            |           index page           |      |    usuario    |
+|     GET     |   /ingredientes/list   |       ingredientes list        |      | PM: eliminar  |
+|     GET     |     /usuarios/:id      | editar infor y eliminar receta |      |    usuario    |
+|     GET     |  /usuarios/:id/editar  |         editar perfil          |      | admin/usuario |
+|    POST     |  /usuarios/:id/editar  |         editar perfil          |      | admin/usuario |
+|    POST     | /usuarios/:id/eliminar |        eliminar perfil         |      |     admin     |
+|     GET     |       /usuarios        |           user list            |      |    usuario    |
+|     GET     |     /recetas/crear     |         crear recetas          |      |    usuario    |
+|    POST     |     /recetas/crear     |         crear recetas          |      |    usuario    |
+|     GET     |  /recetas/mis-recetas  |      list de mis recetas       |      |    usuario    |
+|     GET     | /recetas/todas-recetas |     list de todas recetas      |      |               |
+|     GET     |  /recetas/detalle/:id  |            detalles            |      |    usuario    |
+|     GET     |       /contacto        |           form de AC           |      |    usuario    |
+|    POST     |       /contacto        |      Atencion de cliente       |      |    usuario    |
 
 nota: en /recetas/detalle/:id
 

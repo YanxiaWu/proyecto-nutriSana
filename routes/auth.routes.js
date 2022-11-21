@@ -4,6 +4,7 @@ const User = require("../models/User.model")
 const saltRounds = 10
 const { isLoggedOut } = require('../middleware/route-guard')
 const { isLoggedIn } = require('../middleware/route-guard')
+const { query } = require("express")
 
 // Signup
 router.get('/registrar', isLoggedOut, (req, res, next) => res.render('auth/signup'))
@@ -24,8 +25,6 @@ router.get('/login', isLoggedOut, (req, res, next) => res.render('auth/login'))
 router.post('/login', isLoggedOut, (req, res, next) => {
 
     const { email, password } = req.body
-    console.log({ email, password })
-
     User
         .findOne({ email })
         .then(user => {
@@ -37,7 +36,8 @@ router.post('/login', isLoggedOut, (req, res, next) => {
                 return
             } else {
                 req.session.currentUser = user
-                res.redirect('/')
+                res.redirect(`/usuarios/${user._id}`)
+
             }
         })
         .catch(error => next(error))

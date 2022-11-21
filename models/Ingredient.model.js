@@ -5,6 +5,9 @@ const ingredientSchema = new Schema(
         name: {
             type: String,
         },
+
+
+
     },
     {
         timestamps: true,

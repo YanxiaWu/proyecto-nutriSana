@@ -22,7 +22,7 @@ require('./config/session.config')(app)
 
 
 // Routes
-require("./routes")(app)
+
 
 
 // default value for title local
@@ -32,8 +32,20 @@ const projectName = "nutriSana";
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
 
+app.use((req, res, next) => {
+    if (req.session.currentUser) {
+        app.locals.loggedUser = req.session.currentUser._id
+        app.locals.name = req.session.currentUser.username
+    } else {
+        app.locals.loggedUser = null
+        app.locals.name = null
+    }
+    next()
+})
+
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
+require("./routes")(app)
 require("./error-handling")(app);
 
 module.exports = app;

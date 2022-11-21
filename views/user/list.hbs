@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Todos los Usuarios</h1>
+  <hr />
+
+  {{#each users}}
+    <h4>{{username}}</h4>
+    <a href="/usuarios/{{_id}}" class="btn btn-dark">check the profile of
+      {{username}}</a>
+  {{/each}}
+
+  <br />
+  <hr />
+
+  <a href="/" class="btn btn-dark">Back to Homepage</a>
+</div>

@@ -5,7 +5,7 @@ const messageSchema = new Schema(
         text: {
             type: String,
         },
-        username: [
+        owner: [
             {
                 type: mongoose.Types.ObjectId,
                 ref: "User",
