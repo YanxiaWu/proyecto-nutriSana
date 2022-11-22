@@ -39,6 +39,7 @@ router.get("/recetas/crear", (req, res, next) => {
 //nuevos codigos sobre nuevo formulario
 router.post("/recetas/crear", (req, res, next) => {
     const { ingredient1, quantity1, unit1, ingredient2, quantity2, unit2 } = req.body
+
     let element1 = `${quantity1}${unit1} ${ingredient1}`
     let element2 = `${quantity2}${unit2} ${ingredient2}`
     let totalElements = [element1, element2]
@@ -47,6 +48,7 @@ router.post("/recetas/crear", (req, res, next) => {
     }
 
     console.log('hhhhhhhhhhhhhhhhh', receta)
+
     let recipeJSON = JSON.stringify(receta)
 
     api
