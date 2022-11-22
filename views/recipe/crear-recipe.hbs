@@ -1,0 +1,34 @@
+<div class="container">
+      <div class="row">
+            <h1 class="title">Crear una receta nueva</h1>
+            <hr />
+            <form method="POST" action="/recetas/crear">
+              <div class="form-group">
+                <div class="row">
+
+
+                  <div class="col-12">   
+                    <label for="ingredients" class="form-label">Ingredients</label>
+                    <p>fill in the gap with something like this => ["100g rice","10g oil"]</p>
+                    <input
+                      placeholder="ingredient's quantity and name"id="recipe"
+                      name="recipe"
+                      type="text"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+               </div>
+
+
+
+
+               <hr>
+              <button type="submit" value="submit" class="btn btn-primary">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>

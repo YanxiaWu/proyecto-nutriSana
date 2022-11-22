@@ -4,7 +4,7 @@ const User = require("../models/User.model")
 const saltRounds = 10
 const { isLoggedOut } = require('../middleware/route-guard')
 const { isLoggedIn } = require('../middleware/route-guard')
-const { query } = require("express")
+
 
 // Signup
 router.get('/registrar', isLoggedOut, (req, res, next) => res.render('auth/signup'))
