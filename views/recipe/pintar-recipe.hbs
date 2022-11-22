@@ -1,14 +1,28 @@
-<h1>Hi your recipe is:</h1>
-<h1>Calories</h1>
-<h1>{{result.calories}}</h1>
-<hr />
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Nutrition data</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Calories</h6>
+    <p class="card-text">{{result.calories}}</p>
 
-<h1>Carbohydrate</h1>
-<h1>{{result.totalNutrients.CHOCDF.quantity}}g</h1>
+    <hr />
 
-<h1>Protein</h1>
-<h1>{{result.totalNutrients.PROCNT.quantity}}g</h1>
+    <h6 class="card-subtitle mb-2 text-muted">Carbohydrate</h6>
+    <p class="card-text">{{result.totalNutrients.CHOCDF.quantity}}g</p>
 
-<h1>Fat</h1>
-<h1>{{result.totalNutrients.FAT.quantity}}g</h1>
-<hr />
+    <hr />
+
+    <h6 class="card-subtitle mb-2 text-muted">Fat</h6>
+    <p class="card-text">{{result.totalNutrients.FAT.quantity}}g</p>
+
+    <hr />
+
+    <h6 class="card-subtitle mb-2 text-muted">Protein</h6>
+    <p class="card-text">{{result.totalNutrients.PROCNT.quantity}}g</p>
+
+    <hr />
+
+    <a href="#" class="card-link">Home page</a>
+    <a href="#" class="card-link">My recipes</a>
+    <a href="#" class="card-link">Añadir</a>
+  </div>
+</div>

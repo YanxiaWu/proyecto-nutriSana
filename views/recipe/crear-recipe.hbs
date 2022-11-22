@@ -1,34 +1,78 @@
 <div class="container">
-      <div class="row">
-            <h1 class="title">Crear una receta nueva</h1>
-            <hr />
-            <form method="POST" action="/recetas/crear">
-              <div class="form-group">
-                <div class="row">
-
-
-                  <div class="col-12">   
-                    <label for="ingredients" class="form-label">Ingredients</label>
-                    <p>fill in the gap with something like this => ["100g rice","10g oil"]</p>
-                    <input
-                      placeholder="ingredient's quantity and name"id="recipe"
-                      name="recipe"
-                      type="text"
-                      class="form-control"
-                      required
-                    />
-                  </div>
-               </div>
-
-
-
-
-               <hr>
-              <button type="submit" value="submit" class="btn btn-primary">
-                Submit
-              </button>
-            </form>
-          </div>
-        </div>
+  <form method="POST" action="/recetas/crear">
+    <div class="row">
+      <div class="col-4">
+        <label for="ingredient1" class="form-label">Ingredient</label>
+        <input
+          placeholder="ingredient's name"
+          id="ingredient1"
+          name="ingredient1"
+          type="text"
+          class="form-control"
+          required
+        />
       </div>
+      <div class="col-4">
+        <label for="quantity1" class="form-label">Quantity</label>
+        <input
+          placeholder="quantity, just number"
+          id="quantity1"
+          name="quantity1"
+          type="text"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="col-4">
+        <label for="unit1" class="form-label">Unit</label>
+        <input
+          placeholder="Measure Unit, for example, g, unit, cup"
+          id="unit1"
+          name="unit1"
+          type="text"
+          class="form-control"
+          required
+        />
+      </div>
+
     </div>
+
+    <div class="row">
+      <div class="col-4">
+        <label for="ingredient2" class="form-label">Ingredient</label>
+        <input
+          placeholder="ingredient's name"
+          id="ingredient2"
+          name="ingredient2"
+          type="text"
+          class="form-control"
+        />
+      </div>
+      <div class="col-4">
+        <label for="quantity2" class="form-label">Quantity</label>
+        <input
+          placeholder="quantity, just number"
+          id="quantity2"
+          name="quantity2"
+          type="text"
+          class="form-control"
+        />
+      </div>
+      <div class="col-4">
+        <label for="unit2" class="form-label">Unit</label>
+        <input
+          placeholder="Measure Unit, for example, g, unit, cup"
+          id="unit2"
+          name="unit2"
+          type="text"
+          class="form-control"
+        />
+      </div>
+
+    </div>
+    <hr />
+    <button type="submit" value="submit" class="btn btn-primary">
+      Submit
+    </button>
+  </form>
+</div>

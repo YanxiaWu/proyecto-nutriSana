@@ -16,26 +16,46 @@ router.get("/recetas/crear", (req, res, next) => {
 
 
 // New recipe form (handle)
-router.post("/recetas/crear", (req, res, next) => {
-    const { recipe } = req.body
-    let ingredientes = []
+// router.post("/recetas/crear", (req, res, next) => {
+//     const { recipe } = req.body
+//     let ingredientes = recipe.split(',');
 
-    console.log(recipe)
+//     console.log(ingredientes)
+
+//     let receta = {
+//         ingr: ingredientes
+//     }
+
+//     console.log(receta)
+//     let recipeJSON = JSON.stringify(receta)
+
+//     api
+//         .getRecipe(recipeJSON)
+//         .then(apiResponse => res.render('recipe/pintar-recipe', { result: apiResponse.data }))
+//         .catch(err => console.log(err))
+
+// })
+
+//nuevos codigos sobre nuevo formulario
+router.post("/recetas/crear", (req, res, next) => {
+    const { ingredient1, quantity1, unit1, ingredient2, quantity2, unit2 } = req.body
+    let element1 = `${quantity1}${unit1} ${ingredient1}`
+    let element2 = `${quantity2}${unit2} ${ingredient2}`
+    let totalElements = [element1, element2]
     let receta = {
-        ingr: [recipe]
+        ingr: totalElements
     }
 
-    console.log(receta)
+    console.log('hhhhhhhhhhhhhhhhh', receta)
     let recipeJSON = JSON.stringify(receta)
 
     api
         .getRecipe(recipeJSON)
         .then(apiResponse => res.render('recipe/pintar-recipe', { result: apiResponse.data }))
-        // .then(apiResponse => res.send(apiResponse.data))
         .catch(err => console.log(err))
 
-})
-
+}
+)
 
 
 module.exports = router;
