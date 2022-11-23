@@ -31,12 +31,12 @@
 
                      <div class="col">
                         <label for="latitude" class="form-label">Latitude</label>
-                        <input  type="latitude" class="form-control" id="latitude" name="latitude" value="{{coordinates}}">
+                        <input  type="latitude" class="form-control" id="latitude" name="latitude" value="{{location.coordinates.[0]}}">
                     </div>
 
                      <div class="col">
                         <label for="longitude" class="form-label">Longitude</label>
-                        <input  type="text" class="form-control" id="longitude" name="longitude" value="{{coordinates}}">
+                        <input  type="text" class="form-control" id="longitude" name="longitude" value="{{location.coordinates.[1]}}">
                     </div>
                    
                 <div class="d-grid gap-2">

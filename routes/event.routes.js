@@ -56,7 +56,7 @@ router.get('/events/:id/edit', (req, res, next) => {
     Event
         .findById(event_id)
         .then(event => {
-            // console.log(typeof place.location.coordinates)
+            console.log(event)
             res.render('event/edit-event', event)
         })
         .catch(err => console.log(err))
@@ -64,24 +64,29 @@ router.get('/events/:id/edit', (req, res, next) => {
 });
 
 
-// router.post('/palces/:id/edit', (req, res, next) => {
+router.post('/events/:id/edit', (req, res, next) => {
 
-//     const { name, type } = req.body
-//     const { id: place_id } = req.params
-//     console.log(req.params)
-//     Place
-//         .findByIdAndUpdate(place_id, { name, type })
-//         .then(() => res.redirect(`/palces`))
-//         .catch(err => console.log(err))
+    const { title, type, description, latitude, longitude } = req.body
+    const location = {
+        type: 'Point',
+        coordinates: [latitude, longitude]
+    }
+    const coordinates = [latitude, longitude]
+    const { id: event_id } = req.params
 
-// });
+    Event
+        .findByIdAndUpdate(event_id, { title, type, description, location })
+        .then(() => res.redirect(`/events`))
+        .catch(err => console.log(err))
+
+});
 
 
 // delete one place. delete usa con formulario con POST, o get con get sin formulario
 router.get('/events/:id/delete', (req, res, next) => {
     const { id: event_id } = req.params
 
-    Place
+    Event
         .findByIdAndDelete(event_id)
         .then(() => res.redirect('/events'))
         .catch(err => console.log(err))

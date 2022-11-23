@@ -21,5 +21,4 @@ const Message = model("Message", messageSchema);
 
 module.exports = Message;
 
-// Username referenciando al modelo user?
 
