@@ -26,17 +26,19 @@
       <h5 class="card-title">Protein</h5>
       <p class="card-text">{{protein}}g</p>
       <hr>
+       {{#if ../isAdmin}}
     <form
-            action="/recipes/{{user._id}}/eliminar"
+            action="/recetas/{{_id}}/eliminar"
             method="POST"
             style="display: inline"
           >
             <input
               type="submit"
-              value="Delete this user"
+              value="Delete this recipe"
               class="btn btn-danger"
             />
           </form>
+            {{/if}}
       </div>
 
     </div>
@@ -46,3 +48,6 @@
  {{/each}}
 </div>
 </div>
+
+
+        
