@@ -1,4 +1,5 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, mongoose } = require("mongoose");
+
 
 const eventSchema = new Schema(
     {
@@ -18,7 +19,13 @@ const eventSchema = new Schema(
                 type: String
             },
             coordinates: [Number]
+        },
+        participants: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
         }
+        ]
+
     },
 
     {

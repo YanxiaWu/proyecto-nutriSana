@@ -5,10 +5,12 @@ const Event = require('../models/Event.model')
 const { isLoggedIn } = require("../middleware/route-guard");
 
 
-//create a new place
+//create a new event
 router.get("/events/create", isLoggedIn, (req, res, next) => {
     res.render('event/create-event')
-
+    console.log(req.session.currentUser._id)
+    console.log(req.session.currentUser.username)
+    console.log(req.session.currentUser.role)
 });
 
 router.post('/events/create', isLoggedIn, (req, res, next) => {
@@ -64,6 +66,8 @@ router.get('/events/:id/edit', (req, res, next) => {
 });
 
 
+
+
 router.post('/events/:id/edit', (req, res, next) => {
 
     const { title, type, description, latitude, longitude } = req.body
@@ -82,7 +86,7 @@ router.post('/events/:id/edit', (req, res, next) => {
 });
 
 
-// delete one place. delete usa con formulario con POST, o get con get sin formulario
+// delete. delete usa con formulario con POST, o get con get sin formulario
 router.get('/events/:id/delete', (req, res, next) => {
     const { id: event_id } = req.params
 
@@ -94,7 +98,7 @@ router.get('/events/:id/delete', (req, res, next) => {
 });
 
 
-
+//falta ruta de apuntar
 
 
 

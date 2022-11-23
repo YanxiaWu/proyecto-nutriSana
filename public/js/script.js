@@ -2,3 +2,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("lab JS imported successfully!");
 });
+
+
+function hi() {
+  console.log("hkjjkh")
+}
+
