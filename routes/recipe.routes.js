@@ -64,8 +64,6 @@ router.get('/recetas', (req, res) => {
         .catch(err => console.log(err))
 })
 
-
-
 //eliminar recetas
 router.post('/recetas/:id/eliminar', (req, res, next) => {
     const { id: recipe_id } = req.params

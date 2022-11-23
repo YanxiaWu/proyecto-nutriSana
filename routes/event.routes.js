@@ -50,25 +50,18 @@ router.get('/events', (req, res, next) => {
 
 
 
+// update o edit the event
+router.get('/events/:id/edit', (req, res, next) => {
+    const { id: event_id } = req.params
+    Event
+        .findById(event_id)
+        .then(event => {
+            // console.log(typeof place.location.coordinates)
+            res.render('event/edit-event', event)
+        })
+        .catch(err => console.log(err))
 
-
-
-
-
-
-
-//update o edit the place
-// router.get('/palces/:id/edit', (req, res, next) => {
-//     const { id: place_id } = req.params
-//     Place
-//         .findById(place_id)
-//         .then(place => {
-//             console.log(typeof place.location.coordinates)
-//             res.render('place/edit-place', place)
-//         })
-//         .catch(err => console.log(err))
-
-// });
+});
 
 
 // router.post('/palces/:id/edit', (req, res, next) => {

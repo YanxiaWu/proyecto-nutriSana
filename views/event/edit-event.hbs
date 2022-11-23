@@ -1,0 +1,49 @@
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <h1>Modificate the event</h1>
+            <hr>
+
+            <form action="/events/{{_id}}/edit" method="POST">
+
+                <div class="mb-3 row">
+                    <div class="col">
+                        <label for="title" class="form-label">Title</label>
+                        <input minlength="2" type="title" class="form-control" id="title" name="title" value={{title}}>
+                    </div>
+
+
+                    <div class="col">
+                         <label for="type">Select a type for the event:</label>
+                         <select name="type" id="type" multiple>
+                          <option value="indoor">indoor</option>
+                          <option value="outdoor">outdoor</option>
+                         </select>
+                    </div>
+
+                      <div class="col">
+                        <label for="description" class="form-label">Description</label>
+                        <input minlength="2" type="description" class="form-control" id="description" name="description" value={{description}}>
+                    </div>
+
+                     <div class="col">
+                        <label for="latitude" class="form-label">Latitude</label>
+                        <input  type="latitude" class="form-control" id="latitude" name="latitude" value="{{coordinates}}">
+                    </div>
+
+                     <div class="col">
+                        <label for="longitude" class="form-label">Longitude</label>
+                        <input  type="text" class="form-control" id="longitude" name="longitude" value="{{coordinates}}">
+                    </div>
+                   
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-dark block">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
