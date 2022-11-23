@@ -2,20 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const recipeSchema = new Schema(
     {
-        ingredients:
-            [
-                {
-                    ingredient: {
-                        type: String
-                    },
-                    quantity: {
-                        type: Number
-                    },
-                    unit: {
-                        type: String
-                    }
-                }
-            ],
+        ingredients: [{ type: String }],
         calories: { type: String },
 
         carbohydrate: { type: String },
