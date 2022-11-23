@@ -30,12 +30,12 @@ router.post("/recetas/crear", (req, res, next) => {
     api
         .getRecipe(recipeJSON)
         .then(apiResponse => {
-            // res.render('recipe/pintar-recipe', { result: apiResponse.data })
             const { ingredients, calories } = apiResponse.data
-            console.log("hiiiiiiiiiiiii", ingredient2)
+            const composion = ingredients.map(ing => ing.text)
             const { CHOCDF, FAT, PROCNT } = apiResponse.data.totalNutrients
+
             Recipe
-                .create({ ingredients, calories, carbohydrate: CHOCDF.quantity, fat: FAT.quantity, protein: PROCNT.quantity })
+                .create({ ingredients: composion, calories, carbohydrate: CHOCDF.quantity, fat: FAT.quantity, protein: PROCNT.quantity })
                 .then(recipe => {
                     res.redirect('/recetas')
                 })
@@ -46,6 +46,8 @@ router.post("/recetas/crear", (req, res, next) => {
 
 }
 )
+
+
 
 //listado de recetas
 
@@ -63,6 +65,7 @@ router.get('/recetas', (req, res) => {
         })
         .catch(err => console.log(err))
 })
+
 
 //eliminar recetas
 router.post('/recetas/:id/eliminar', (req, res, next) => {
