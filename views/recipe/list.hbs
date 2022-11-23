@@ -15,21 +15,34 @@
       <hr>
 <h5 class="card-title">Calories</h5>
       <p class="card-text">{{calories}}g</p>
-      <hr>
+      <hr>  
       <h5 class="card-title">Carbohydrate</h5>
       <p class="card-text">{{carbohydrate}}g</p>
       <hr>
-<h5 class="card-title">Fat</h5>
+    <h5 class="card-title">Fat</h5>
       <p class="card-text">{{fat}}g</p>
       <hr>
 
       <h5 class="card-title">Protein</h5>
       <p class="card-text">{{protein}}g</p>
       <hr>
-
+    <form
+            action="/recipes/{{user._id}}/eliminar"
+            method="POST"
+            style="display: inline"
+          >
+            <input
+              type="submit"
+              value="Delete this user"
+              class="btn btn-danger"
+            />
+          </form>
       </div>
+
     </div>
+   
   </div>
+  
  {{/each}}
 </div>
 </div>

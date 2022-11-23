@@ -30,11 +30,12 @@ router.post("/recetas/crear", (req, res, next) => {
     api
         .getRecipe(recipeJSON)
         .then(apiResponse => {
+            // res.render('recipe/pintar-recipe', { result: apiResponse.data })
             const { ingredients, calories } = apiResponse.data
-            const composion = ingredients.map(ing => ing.text)
+            console.log("hiiiiiiiiiiiii", ingredient2)
             const { CHOCDF, FAT, PROCNT } = apiResponse.data.totalNutrients
             Recipe
-                .create({ ingredients: composion, calories, carbohydrate: CHOCDF.quantity, fat: FAT.quantity, protein: PROCNT.quantity })
+                .create({ ingredients, calories, carbohydrate: CHOCDF.quantity, fat: FAT.quantity, protein: PROCNT.quantity })
                 .then(recipe => {
                     res.redirect('/recetas')
                 })
