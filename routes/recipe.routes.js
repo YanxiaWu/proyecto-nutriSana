@@ -5,7 +5,6 @@ const Recipe = require('./../models/Recipe.model')
 const nutritionApi = require("./../services/edamam-api.service");
 const api = new nutritionApi();
 
-// const Recipe = require('./../models/Recipe.model')
 
 // New recipe form (render)
 router.get("/recetas/crear", (req, res, next) => {
@@ -31,12 +30,11 @@ router.post("/recetas/crear", (req, res, next) => {
     api
         .getRecipe(recipeJSON)
         .then(apiResponse => {
-            // res.render('recipe/pintar-recipe', { result: apiResponse.data })
             const { ingredients, calories } = apiResponse.data
-            console.log("hiiiiiiiiiiiii", ingredient2)
+            const composion = ingredients.map(ing => ing.text)
             const { CHOCDF, FAT, PROCNT } = apiResponse.data.totalNutrients
             Recipe
-                .create({ ingredients, calories, carbohydrate: CHOCDF.quantity, fat: FAT.quantity, protein: PROCNT.quantity })
+                .create({ ingredients: composion, calories, carbohydrate: CHOCDF.quantity, fat: FAT.quantity, protein: PROCNT.quantity })
                 .then(recipe => {
                     res.redirect('/recetas')
                 })
