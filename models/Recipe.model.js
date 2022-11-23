@@ -6,8 +6,7 @@ const recipeSchema = new Schema(
             [
                 {
                     ingredient: {
-                        type: mongoose.Types.ObjectId,
-                        ref: "Ingredient"
+                        type: String
                     },
                     quantity: {
                         type: Number
@@ -17,10 +16,18 @@ const recipeSchema = new Schema(
                     }
                 }
             ],
-        owner: {
-            type: mongoose.Types.ObjectId,
-            ref: "User"
-        },
+        calories: { type: String },
+
+        carbohydrate: { type: String },
+
+        fat: { type: String },
+
+        protein: { type: String }
+
+        // owner: {
+        //     type: mongoose.Types.ObjectId,
+        //     ref: "User"
+        // }
 
     },
 

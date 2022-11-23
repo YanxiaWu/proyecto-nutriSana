@@ -1,12 +1,12 @@
 <div class="container d-flex justify-content-center mt-100">
   <div class="row">
     <h1 style="margin: 50px auto ; font-size:50px">{{appTitle}} 🥗</h1>
-    {{!-- <p class="text-align-center">Welcome Ironhacker!Alejandro y Xia</p> --}}
+
+     <a class="btn btn-secondary btn-lg" href="/events/create">Create a event</a>
+     <hr>
   </div>
 
 </div>
-
-<span>HOLAAAAAA</span>
 
 <div class="container d-flex align-content-center"></div>
 
@@ -17,5 +17,16 @@
   <hr>
   <a class="btn btn-secondary btn-lg" href="/logout">Logout</a>
 </div>
-
 </div>
+
+ <h3>Map of all events</h3>
+
+  <figure id="myMap"></figure>
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/eventsMap.js"></script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCa70rdvV8G50ikRY53vcMNGOyfWy4Ppc&callback=initMap"
+>
+</script>

@@ -13,7 +13,7 @@ router.get("/usuarios", isLoggedIn, (req, res, next) => {
         .then(users => {
             res.render('user/list', { users })
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 
@@ -28,7 +28,7 @@ router.get('/usuarios/:id', isLoggedIn, (req, res) => {
         .then(user => {
             res.render('user/profile', { user, isAdmin, isMY })
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 
@@ -41,7 +41,7 @@ router.get('/usuarios/:id/editar', isLoggedIn, (req, res, next) => {
         .then(user => {
             res.render('user/edit-profile', user)
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 
 });
 
@@ -52,7 +52,7 @@ router.post('/usuarios/:id/editar', isLoggedIn, (req, res, next) => {
     User
         .findByIdAndUpdate(user_id, { username, email, password })
         .then(() => res.redirect(`/usuarios/${user_id}`))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 
 })
 
@@ -65,7 +65,7 @@ router.post('/usuarios/:id/eliminar', isLoggedIn, (req, res) => {
     User
         .findByIdAndDelete(user_id)
         .then(() => res.redirect('/usuarios'))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 

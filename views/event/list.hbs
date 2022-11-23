@@ -1,0 +1,34 @@
+
+<h2 class="title">List of All Events</h2>
+
+
+<br />
+<hr />
+
+<div class="container">
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {{#each event}}
+      <div class="col" style="margin-bottom: 50px;">
+        <div class="card h-100" style="margin-bottom:10px">
+          <div class="card-body">
+            <h4 class="card-title" style="font-weight:border">Title:{{title}}</h4>
+            <h6>Type:{{type}}</h6>
+            <hr />
+            <p>Description:{{description}}</p>
+            <h6>Coords:{{location.coordinates}}</h6>
+            <hr />
+          {{#if ../isAdmin}}
+         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+    
+            <a href="/events/{{_id}}/edit" class="btn btn-dark">Edit the event</a>
+             <a href="/events/{{_id}}/delete" class="btn btn-dark">Delete the
+              event</a>
+          </div>
+  {{/if}}
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>

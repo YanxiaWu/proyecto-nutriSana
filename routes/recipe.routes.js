@@ -1,13 +1,11 @@
 const express = require('express');
+const mongoose = require('mongoose')
 const router = express.Router();
-
+const Recipe = require('./../models/Recipe.model')
 const nutritionApi = require("./../services/edamam-api.service");
 const api = new nutritionApi();
 
 // const Recipe = require('./../models/Recipe.model')
-
-
-
 
 // New recipe form (render)
 router.get("/recetas/crear", (req, res, next) => {
@@ -15,26 +13,7 @@ router.get("/recetas/crear", (req, res, next) => {
 })
 
 
-// New recipe form (handle)
-// router.post("/recetas/crear", (req, res, next) => {
-//     const { recipe } = req.body
-//     let ingredientes = recipe.split(',');
 
-//     console.log(ingredientes)
-
-//     let receta = {
-//         ingr: ingredientes
-//     }
-
-//     console.log(receta)
-//     let recipeJSON = JSON.stringify(receta)
-
-//     api
-//         .getRecipe(recipeJSON)
-//         .then(apiResponse => res.render('recipe/pintar-recipe', { result: apiResponse.data }))
-//         .catch(err => console.log(err))
-
-// })
 
 //nuevos codigos sobre nuevo formulario
 router.post("/recetas/crear", (req, res, next) => {
@@ -47,17 +26,46 @@ router.post("/recetas/crear", (req, res, next) => {
         ingr: totalElements
     }
 
-    console.log('hhhhhhhhhhhhhhhhh', receta)
-
     let recipeJSON = JSON.stringify(receta)
 
     api
         .getRecipe(recipeJSON)
-        .then(apiResponse => res.render('recipe/pintar-recipe', { result: apiResponse.data }))
+        .then(apiResponse => {
+            // res.render('recipe/pintar-recipe', { result: apiResponse.data })
+            const { ingredients, calories } = apiResponse.data
+            console.log("hiiiiiiiiiiiii", ingredient2)
+            const { CHOCDF, FAT, PROCNT } = apiResponse.data.totalNutrients
+            Recipe
+                .create({ ingredients, calories, carbohydrate: CHOCDF.quantity, fat: FAT.quantity, protein: PROCNT.quantity })
+                .then(recipe => {
+                    res.redirect('/recetas')
+                })
+                .catch(err => console.log(err))
+
+        })
         .catch(err => console.log(err))
 
 }
 )
+
+//listado de recetas
+
+router.get('/recetas', (req, res) => {
+
+    Recipe
+        .find()
+        .then(recipes => {
+            res.render('recipe/list', { recipes: recipes })
+        })
+        .catch(err => console.log(err))
+})
+
+
+
+
+
+
+
 
 
 module.exports = router;

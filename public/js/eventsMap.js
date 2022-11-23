@@ -8,7 +8,7 @@ function initMap() {
 function getPlaces() {
     console.log('axios')
     axios
-        .get('/api/palces')
+        .get('/api/events')
         .then(response => setMarkers(response.data))
         .catch(err => console.log(err))
 }
@@ -21,7 +21,7 @@ function setMarkers(places) {
         new google.maps.Marker({
             map: myMap,
             position: { lat, lng },
-            title: element.name,
+            title: element.title,
         })
 
     });

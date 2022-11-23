@@ -1,38 +1,55 @@
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-       <input
-          placeholder="Pon un titulo a tu receta"
-          id="title"
-          name="title"
-          type="text"
-          class="form-control"
-          required
-        />
-    <hr>
 
-     <h5 class="card-title">Nutrition data</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Calories</h6>
-    <p class="card-text">{{result.calories}}</p>
+<div class="container">
+  <h1>Todos las recetas</h1>
+  <hr />
 
+  {{!-- {{#each recipes}}
+  <h5 class="card-title">Nutrition data of</h5>
     <hr />
+ <h6 class="card-subtitle mb-2 text-muted">Calories</h6>
+    <p class="card-text">{{calories}}g</p>
+        <hr />
 
-    <h6 class="card-subtitle mb-2 text-muted">Carbohydrate</h6>
-    <p class="card-text">{{result.totalNutrients.CHOCDF.quantity}}g</p>
+  <h6 class="card-subtitle mb-2 text-muted">Carbohydrate</h6>
+  <p class="card-text">{{carbohydrate}}g</p>
+      <hr />
 
-    <hr />
-
-    <h6 class="card-subtitle mb-2 text-muted">Fat</h6>
-    <p class="card-text">{{result.totalNutrients.FAT.quantity}}g</p>
+  <h6 class="card-subtitle mb-2 text-muted">Fat</h6>
+  <p class="card-text">{{fat}}g</p>
 
     <hr />
 
     <h6 class="card-subtitle mb-2 text-muted">Protein</h6>
-    <p class="card-text">{{result.totalNutrients.PROCNT.quantity}}g</p>
+    <p class="card-text">{{protein}}g</p>
 
-    <hr />
+  {{/each}} --}}
 
-    <a href="/" class="card-link">Home page</a>
-    <a href="#" class="card-link">My recipes</a>
-    <a href="#" class="card-link">Añadir</a>
-  </div>
+  <hr />
+
+  <div class="card text-bg-success mb-3" style="max-width: 18rem;">
+    {{#each recipes}}
+    <div class="card-header">Nutrition data</div>
+      {{#each ingredients}}
+      <p>{{this.text}}</p>
+      {{/each}}
+
+    <div class="card-body">
+      <h5 class="card-title">Calories</h5>
+      <p class="card-text">{{calories}}g</p>
+      <hr>
+
+      <h5 class="card-title">Carbohydrate</h5>
+      <p class="card-text">{{carbohydrate}}g</p>
+      <hr>
+
+      <h5 class="card-title">Fat</h5>
+      <p class="card-text">{{fat}}g</p>
+      <hr>
+
+      <h5 class="card-title">Protein</h5>
+      <p class="card-text">{{protein}}g</p>
+      <hr>
+    </div>
+    {{/each}}
+  <a href="/" class="btn btn-dark">Back to Homepage</a>
 </div>
