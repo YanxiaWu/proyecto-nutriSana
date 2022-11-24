@@ -19,25 +19,19 @@
             </a>
           </li>
           {{#unless name}}
-
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/login">Login</a>
-          </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/registrar">Signup</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/login">Login</a>
+          </li>
+
           {{/unless}}
           {{#if name}}
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/logout">Logout
             </a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/usuarios/{{loggedUser}}">{{name}}</a>
-          </li>
-          {{/if}}
-
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/events">Events</a>
           </li>
@@ -45,10 +39,16 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/recetas">All recipes</a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/recetas/mis-recetas">My recipes</a>
+            <a class="nav-link active" aria-current="page" href="/usuarios/{{loggedUser}}">{{name}}</a>
           </li>
+          {{/if}}
+
+
+
+          {{!-- <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/recetas/mis-recetas">My recipes</a>
+          </li> --}}
 
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/contacto">Contact</a>

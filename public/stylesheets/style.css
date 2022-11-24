@@ -1,6 +1,5 @@
 #myMap {
-  height: 400px;
-  background-color: red;
+  height: 800px;
 }
 
 
@@ -12,7 +11,29 @@ body {
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  font-family: 'Kaushan Script'
 
+}
+
+.title {
+
+  animation-duration: 8s;
+  animation-name: slidein;
+  animation-iteration-count: infinite;
+}
+
+@keyframes slidein {
+  0% {
+    margin-left: 0%;
+  }
+
+  50% {
+    margin-left: 300px;
+  }
+
+  100% {
+    margin-left: 0%;
+  }
 }
 
 .wrapper-1 {
@@ -27,14 +48,22 @@ body {
   text-align: center;
 }
 
-h1 {
+h1,
+h3 {
   font-family: 'Kaushan Script', cursive;
-  font-size: 4em;
+  font-size: 3em;
   letter-spacing: 3px;
   color: #5892FF;
   margin: 0;
   margin-bottom: 20px;
+  text-align: center;
 }
+
+
+
+
+
+
 
 .wrapper-2 p {
   margin: 0;
@@ -78,7 +107,7 @@ h1 {
 
 @media (min-width:360px) {
   h1 {
-    font-size: 4.5em;
+    font-size: 3em;
   }
 
   .go-home {
@@ -123,15 +152,17 @@ h1 {
 .list-participants {
   list-style: none;
   display: flex;
-
+  padding-left: 0px;
+  justify-content: flex-start;
 }
 
 .list-participants li {
-  margin-left: 0px;
+
   padding: 10px 15px;
   background-color: #04AA6D;
   margin-right: 10px;
   color: white;
   border-radius: 50%;
+
 
 }

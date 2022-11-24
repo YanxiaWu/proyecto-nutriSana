@@ -1,4 +1,4 @@
-<h2 class="title">List of All Events</h2>
+<h1 style="margin-top:30px;">List of All Events</h1>
 <br />
 <hr />
 
@@ -9,7 +9,7 @@
     <div class="col" style="margin-bottom: 50px;">
       <div class="card h-100" style="margin-bottom:10px">
         <div class="card-body">
-          <h4 class="card-title" style="font-weight:border">Title:{{title}}</h4>
+          <h4 class="card-title" style="font-weight:border">{{title}}</h4>
           <h6>Type:{{type}}</h6>
           <hr />
           <p>Description:{{description}}</p>
@@ -27,9 +27,10 @@
           </ul>
           <hr />
           {{#if ../isAdmin}}
-          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+          <div class="btn-group d-grid gap-2" role="group" aria-label="Basic mixed styles example">
 
             <a href="/events/{{_id}}/edit" class="btn btn-dark">Edit the event</a>
+
             <a href="/events/{{_id}}/delete" class="btn btn-dark">Delete the
               event</a>
           </div>
