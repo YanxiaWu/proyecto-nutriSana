@@ -29,7 +29,7 @@ router.post('/events/create', isLoggedIn, (req, res, next) => {
 
 //List events
 
-router.get('/events', (req, res, next) => {
+router.get('/events', isLoggedIn, (req, res, next) => {
 
     let isAdmin = req.session.currentUser ? req.session.currentUser.role === 'ADMIN' : false
 

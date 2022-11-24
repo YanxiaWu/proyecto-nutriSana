@@ -17,12 +17,15 @@ router.get("/crear", isLoggedIn, (req, res, next) => {
 // New recipe post 
 router.post("/crear", isLoggedIn, (req, res, next) => {
 
-    const { ingredient1, quantity1, unit1, ingredient2, quantity2, unit2 } = req.body
+    const { ingredient1, quantity1, unit1, ingredient2, quantity2, unit2, ingredient3, quantity3, unit3, ingredient4, quantity4, unit4 } = req.body
 
     let element1 = `${quantity1}${unit1} ${ingredient1}`
     let element2 = `${quantity2}${unit2} ${ingredient2}`
+    let element3 = `${quantity3}${unit3} ${ingredient3}`
+    let element4 = `${quantity4}${unit4} ${ingredient4}`
+
     let receta = {
-        ingr: [element1, element2]
+        ingr: [element1, element2, element3, element4]
     }
 
     let recipeJSON = JSON.stringify(receta)

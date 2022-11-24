@@ -13,8 +13,8 @@ function getPlaces() {
         .catch(err => console.log(err))
 }
 
-function setMarkers(places) {
-    places.forEach(element => {
+function setMarkers(events) {
+    events.forEach(element => {
         const lat = element.location.coordinates[0]
         const lng = element.location.coordinates[1]
 
@@ -33,7 +33,7 @@ function renderMap() {
 
     myMap = new google.maps.Map(
         document.querySelector('#myMap'), {
-        zoom: 15,
+        zoom: 13,
         center: { lat: 40.392635198409224, lng: - 3.6986031017746086 }
 
     })
