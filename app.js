@@ -12,6 +12,7 @@ const express = require("express");
 // Handles the handlebars
 // https://www.npmjs.com/package/hbs
 const hbs = require("hbs");
+const { reqSession } = require("./middleware/req-session-currentUser");
 
 const app = express();
 
@@ -32,16 +33,10 @@ const projectName = "nutriSana";
 app.locals.appTitle = `${capitalize(projectName)}`;
 
 
-app.use((req, res, next) => {
-    if (req.session.currentUser) {
-        app.locals.loggedUser = req.session.currentUser._id
-        app.locals.name = req.session.currentUser.username
-    } else {
-        app.locals.loggedUser = null
-        app.locals.name = null
-    }
-    next()
-})
+
+app.use(reqSession)
+
+
 
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes

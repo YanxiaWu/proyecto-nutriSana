@@ -4,18 +4,16 @@ const User = require('./../models/User.model')
 const Event = require('../models/Event.model')
 const { isLoggedIn } = require("../middleware/route-guard");
 
-
 //create a new event
 router.get("/events/create", isLoggedIn, (req, res, next) => {
+
     res.render('event/create-event')
-    console.log(req.session.currentUser._id)
-    console.log(req.session.currentUser.username)
-    console.log(req.session.currentUser.role)
 });
 
 router.post('/events/create', isLoggedIn, (req, res, next) => {
 
     const { title, type, description, latitude, longitude } = req.body
+
     const location = {
         type: 'Point',
         coordinates: [latitude, longitude]
@@ -23,50 +21,66 @@ router.post('/events/create', isLoggedIn, (req, res, next) => {
 
     Event
         .create({ title, type, description, location })
-        .then(Event => {
+        .then(() => {
             res.redirect('/events')
         })
-        .catch(err => console.log(err))
+        .catch(error => { next(error) })
 });
 
-
-//all events,solo ADMIN puede ver el button de editar y eliminar
+//List events
 
 router.get('/events', (req, res, next) => {
-    let isAdmin
-    if (req.session.currentUser) {
-        isAdmin = req.session.currentUser.role === 'ADMIN'
-    } else {
-        isAdmin = false
-    }
+
+    let isAdmin = req.session.currentUser ? req.session.currentUser.role === 'ADMIN' : false
+
     Event
         .find()
+
+        .populate("participants")
+
+
         .then(event => {
             res.render('event/list', {
                 event,
                 isAdmin
             })
         })
-        .catch(err => console.log(err))
+        .catch(error => { next(error) })
 })
 
+// Update participants event
 
+router.post('/events/:id/join', (req, res, next) => {
 
-// update o edit the event
-router.get('/events/:id/edit', (req, res, next) => {
     const { id: event_id } = req.params
+    const userId = req.session.currentUser._id
+
     Event
-        .findById(event_id)
+        .findByIdAndUpdate(event_id, { $addToSet: { participants: userId } })
         .then(event => {
-            console.log(event)
-            res.render('event/edit-event', event)
+
+            res.redirect("/events")
         })
-        .catch(err => console.log(err))
+        .catch(error => { next(error) })
 
 });
 
+// { $addToSet: { <field1>: <value1>, ... } }
 
 
+// Update events
+router.get('/events/:id/edit', (req, res, next) => {
+
+    const { id: event_id } = req.params
+
+    Event
+        .findById(event_id)
+        .then(event => {
+            res.render('event/edit-event', event)
+        })
+        .catch(error => { next(error) })
+
+});
 
 router.post('/events/:id/edit', (req, res, next) => {
 
@@ -75,30 +89,30 @@ router.post('/events/:id/edit', (req, res, next) => {
         type: 'Point',
         coordinates: [latitude, longitude]
     }
-    const coordinates = [latitude, longitude]
     const { id: event_id } = req.params
 
     Event
         .findByIdAndUpdate(event_id, { title, type, description, location })
         .then(() => res.redirect(`/events`))
-        .catch(err => console.log(err))
+        .catch(error => { next(error) })
 
 });
 
-
 // delete. delete usa con formulario con POST, o get con get sin formulario
 router.get('/events/:id/delete', (req, res, next) => {
+
     const { id: event_id } = req.params
 
     Event
         .findByIdAndDelete(event_id)
         .then(() => res.redirect('/events'))
-        .catch(err => console.log(err))
-
+        .catch(error => { next(error) })
 });
 
 
-//falta ruta de apuntar
+
+
+
 
 
 

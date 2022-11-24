@@ -36,8 +36,5 @@ function renderMap() {
         zoom: 15,
         center: { lat: 40.392635198409224, lng: - 3.6986031017746086 }
 
-    }
-
-    )
-
+    })
 }

@@ -1,0 +1,42 @@
+<div class="container">
+    <h1>My recipes</h1>
+    <a href="/" class="btn btn-dark">Back to Homepage</a>
+    <hr />
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {{#each recipes}}
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Nutrition data</h3>
+                    {{#each ingredients}}
+                    <p>{{this}}</p>
+                    {{/each}}
+                    <hr>
+                    <h5 class="card-title">Calories</h5>
+                    <p class="card-text">{{calories}}g</p>
+                    <hr>
+                    <h5 class="card-title">Carbohydrate</h5>
+                    <p class="card-text">{{carbohydrate}}g</p>
+                    <hr>
+                    <h5 class="card-title">Fat</h5>
+                    <p class="card-text">{{fat}}g</p>
+                    <hr>
+
+                    <h5 class="card-title">Protein</h5>
+                    <p class="card-text">{{protein}}g</p>
+                    <hr>
+                    {{!-- {{#if ../isAdmin}} --}}
+                    <form action="/recetas/{{_id}}/eliminar" method="POST" style="display: inline">
+                        <input type="submit" value="Delete this recipe" class="btn btn-danger" />
+                    </form>
+                    {{!-- {{/if}} --}}
+                </div>
+
+            </div>
+
+        </div>
+
+
+        {{/each}}
+    </div>
+</div>

@@ -7,7 +7,7 @@ router.get('/events', (req, res, next) => {
     Event
         .find()
         .then(events => res.json(events))
-        .catch(err => console.log(err))
+        .catch(error => { next(error) })
 })
 
 module.exports = router

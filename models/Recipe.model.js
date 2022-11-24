@@ -1,22 +1,17 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, Types } = require("mongoose");
 
 const recipeSchema = new Schema(
     {
         ingredients: [{ type: String }],
         calories: { type: String },
-
         carbohydrate: { type: String },
-
         fat: { type: String },
-
-        protein: { type: String }
-
-        // owner: {
-        //     type: mongoose.Types.ObjectId,
-        //     ref: "User"
-        // }
+        protein: { type: String },
+        owner: {
+            type: Types.ObjectId,
+            ref: "User"
+        }
     },
-
     {
         timestamps: true
     }

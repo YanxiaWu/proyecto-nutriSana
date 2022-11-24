@@ -15,29 +15,24 @@
         <h5 class="card-title">More options</h5>
         <hr />
         <a href="/usuarios" class="btn btn-dark">Back to cheack all users</a>
+
         <hr>
-        
+
         {{#if isMY}}
-          <a href="/recetas/crear" class="btn btn-dark">Create recipe</a>
-          <a href="/usuarios/{{user._id}}/editar" class="btn btn-warning">Edit
-            my profile</a>
+        <a href="/recetas/crear" class="btn btn-dark">Create recipe</a>
+        <a href="/usuarios/{{user._id}}/editar" class="btn btn-warning">Edit
+          my profile</a>
+        <a href="/recetas/mis-recetas" class="btn btn-dark" aria-current="page">Mis recetas</a>
+
         {{/if}}
 
         {{#if isAdmin}}
-          <form
-            action="/usuarios/{{user._id}}/eliminar"
-            method="POST"
-            style="display: inline"
-          >
-            <input
-              type="submit"
-              value="Delete this user"
-              class="btn btn-danger"
-            />
-          </form>
+        <form action="/usuarios/{{user._id}}/eliminar" method="POST" style="display: inline">
+          <input type="submit" value="Delete this user" class="btn btn-danger" />
+        </form>
         {{/if}}
       </div>
     </div>
   </div>
-  
+
 </div>
